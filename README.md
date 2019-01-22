@@ -1,8 +1,9 @@
 # Instalação
 
+* Clone o repositório ou faça download do arquivo zip
 * Descompacte o arquivo zip 
 * rode npm install para instalar as dependências
-* rpde npm start dentro da pasta reactnd-project-myreads-starter para rodar o projeto.
+* rode npm start dentro da pasta reactnd-project-myreads-starter para rodar o projeto.
 
 ## Dependências
 
