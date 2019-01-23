@@ -12,6 +12,7 @@ class Search extends React.Component {
         books: []
     }
 
+    // Esta função é chamada no onChange da tag <input>
     searchBook = async (e) => {
   
         const query = e.target.value;
@@ -21,7 +22,7 @@ class Search extends React.Component {
         if(query.trim()) {
             const results = await search(query);
             this.setState({books: results})
-            console.log(results);
+            // Aqui verifica se a busca returnou algum erro
             if (results.error) {
                 this.setState({books: []})
             } else {
@@ -54,8 +55,11 @@ class Search extends React.Component {
                 <ol className="books-grid">
                     {this.state.books.length > 0 &&
                     this.state.books.map((b) => (
-                        //ESTA DANDO PAU AQUI NO HANDLE CHANGE
-                        <Books key={b.id} teste={b}/>
+                        <Books 
+                            key={b.id} 
+                            teste={b} 
+                            updateShelfs={this.props.updateShelfs} 
+                            optionsValue={this.props.optionsValue}/>
                     ))}
                 </ol>
             </div>

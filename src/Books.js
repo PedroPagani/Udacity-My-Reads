@@ -9,7 +9,7 @@ class Books extends React.Component {
             const shelf = e.target.value;
             const book = this.props.teste;
             await update(book, shelf);
-            this.props.handleChange();
+            this.props.updateShelfs();
     }
 
     render() {
@@ -20,7 +20,7 @@ class Books extends React.Component {
                     <div className="book-cover" style={{ width: 128, height: 193, 
                         backgroundImage: `url(${this.props.teste.imageLinks ? this.props.teste.imageLinks.thumbnail : ""})` }}></div>
                     <div className="book-shelf-changer">
-                      <select onChange={this.change} value={this.props.teste.shelf}>
+                      <select onChange={this.change} value={this.props.optionsValue}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>

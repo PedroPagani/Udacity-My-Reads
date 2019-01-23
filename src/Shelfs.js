@@ -6,7 +6,7 @@ import Books from './Books'
 class Shelfs extends React.Component {
 
     render() {
-        
+        console.log(this.props.books)
         return (
             <div className="list-books-content">
                 <div>
@@ -15,7 +15,11 @@ class Shelfs extends React.Component {
                         <div className="bookshelf-books">
                             <ol className="books-grid">
                                 {this.props.books.map((b) => (
-                                    <Books teste={b} key={b.id}  handleChange={this.props.handleChange}/>
+                                    <Books 
+                                        teste={b} 
+                                        key={b.id}  
+                                        updateShelfs={this.props.updateShelfs} 
+                                        optionsValue={this.props.optionsValue}/>
                                 ))}
                             </ol>
                         </div>
