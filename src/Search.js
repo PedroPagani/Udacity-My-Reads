@@ -9,7 +9,9 @@ class Search extends React.Component {
 
     state = {
         query: "",
-        books: []
+        books: [],
+        
+    
     }
 
     // Esta função é chamada no onChange da tag <input>
@@ -28,7 +30,6 @@ class Search extends React.Component {
             } else {
                 this.setState({books: results})
             }
-
         } else {
             this.setState({books: [] })
         }
@@ -54,13 +55,23 @@ class Search extends React.Component {
             <div className="search-books-results">
                 <ol className="books-grid">
                     {this.state.books.length > 0 &&
-                    this.state.books.map((b) => (
-                        <Books 
+                    this.state.books.map((b) => {
+                        const found = this.props.booksInShelfs.find((s) => s.id === b.id)
+                        
+                        // found.shelf só funciona quando esta dentro do if(found), fora do if, ele emite um erro de que shelf não esta definido
+                        if (found) {    
+                            b.shelf = found.shelf;
+                        } else {
+                            b.shelf = "none";
+                        }
+                        
+                        return <Books 
                             key={b.id} 
-                            teste={b} 
-                            updateShelfs={this.props.updateShelfs} 
-                            optionsValue={this.props.optionsValue}/>
-                    ))}
+                            teste={b}
+                            updateShelfs={this.props.updateShelfs}
+                            
+                        />
+                    })}
                 </ol>
             </div>
         </div>
